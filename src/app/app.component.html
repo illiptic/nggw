@@ -1,3 +1,9 @@
 <h1>
   {{title}}
+
+  <ul>
+    <li *ngFor="let prof of professions">
+      <img [src]="prof.icon" /><span>{{ prof.name }}</span>
+    </li>
+  </ul>
 </h1>

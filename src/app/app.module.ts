@@ -5,6 +5,9 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
+import { ApiService } from './services/api.service'
+import { ProfessionService } from './professions/profession.service'
+
 @NgModule({
   declarations: [
     AppComponent
@@ -14,7 +17,7 @@ import { AppComponent } from './app.component';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [ApiService, ProfessionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
