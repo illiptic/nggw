@@ -1,0 +1,8 @@
+{
+  "/api": {
+    "target": "https://api.guildwars2.com",
+    "pathRewrite": {"^/api": "/v2"},
+    "changeOrigin": true,
+    "secure": false
+  }
+}

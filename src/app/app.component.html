@@ -1,9 +1,19 @@
-<h1>
-  {{title}}
+<div *ngIf="username">
+  <h1>
+    Welcome, {{username}}
+  </h1>
 
-  <ul>
-    <li *ngFor="let prof of professions">
-      <img [src]="prof.icon" /><span>{{ prof.name }}</span>
-    </li>
-  </ul>
-</h1>
+    <!-- <ul>
+      <li *ngFor="let prof of professions">
+        <img [src]="prof.icon" /><span>{{ prof.name }}</span>
+      </li>
+    </ul> -->
+
+    <ul>
+      <li *ngFor="let char of characterNames">
+        <span (click)="displayCharacter(char)">{{ char }}</span>
+      </li>
+    </ul>
+
+    <character *ngIf="currentCharacter" [character]="characters[currentCharacter]" [profession]="currentCharacterProfession"></character>
+</div>
