@@ -5,4 +5,5 @@ export class Character {
   gender: string
   race: string
   profession: string
+  specializations: any
 }

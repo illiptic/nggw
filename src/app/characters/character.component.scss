@@ -1,0 +1,35 @@
+.specializations {
+    color: white;
+    margin: auto;
+    width: 800px;
+
+  .specialization {
+    height: 256px;
+    width: 800px;
+
+    h2 {
+      margin: 0;
+      padding: 8px;
+    }
+
+    .trait-grid {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      height: 212px;
+      align-content: space-around;
+      justify-content: space-around;
+    }
+    .trait {
+      height: 64px;
+      width: 64px;
+
+      &.minor {
+        margin: 64px 0;
+      }
+      &.selected {
+        border: 1px solid cyan;
+      }
+    }
+  }
+}

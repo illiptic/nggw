@@ -1,3 +1,17 @@
 <div *ngIf="character">
-  <h2><img *ngIf="profession" [src]="profession.icon_big" /> {{character.name}} - level {{character.level}} {{ character.profession }}</h2>
+  <img *ngIf="profession" [src]="profession.icon_big" />
+  <h2>{{character.name}}</h2>
+  <span>level {{character.level}} {{character.race}} {{ character.profession }}</span>
+
+  <div *ngIf="profession" class="specializations">
+    <div *ngFor="let spec of profession.specializations" class="specialization" [style.background-image]="getBackground(spec)">
+      <h2>{{spec.name}}</h2>
+      <div class="trait-grid">
+        <div *ngFor="let trait of spec.traits" class="trait" [class.minor]="trait.slot === 'Minor'" [class.selected]="characterSpecSelected(trait)">
+          <img height="64" [src]="trait.icon" [alt]="trait.name" [title]="trait.name" />
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
