@@ -1,0 +1,13 @@
+<div class="character">
+  <ul class="character-list">
+    <li *ngFor="let char of characterNames" [class.selected]="currentCharacter === char" (click)="displayCharacter(char)">
+      <span>
+        {{ char }}
+      </span>
+    </li>
+  </ul>
+
+  <div class="detail">
+    <character-detail *ngIf="currentCharacter" [character]="characters[currentCharacter]" [profession]="currentCharacterProfession"></character-detail>
+  </div>
+</div>

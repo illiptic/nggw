@@ -1,14 +1,14 @@
 import { Component, Input } from '@angular/core'
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser'
-import { Character } from './character.model'
+import { Character } from '../character/character.model'
 import { Profession, Specialization, Trait } from '../professions/profession.model'
 
 @Component({
-  selector: 'character',
-  templateUrl: './character.component.html',
-  styleUrls: ['./character.component.scss']
+  selector: 'character-detail',
+  templateUrl: './character-detail.component.html',
+  styleUrls: ['./character-detail.component.scss']
 })
-export class CharacterComponent {
+export class CharacterDetailComponent {
 
   @Input() character: Character
   @Input() profession: Profession
