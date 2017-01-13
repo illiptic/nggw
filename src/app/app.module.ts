@@ -3,18 +3,20 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { AppComponent } from './app.component';
-import { CharacterComponent } from './characters/character.component'
-
 import { ApiService } from './services/api.service'
 import { AccountService } from './account/account.service'
 import { CharacterService } from './characters/character.service'
-import { ProfessionService } from './professions/profession.service'
+import { ProfessionService } from './professions/profession.service';
+
+import { AppComponent } from './app.component';
+import { CharacterComponent } from './characters/character.component'
+import { MenuComponent } from './common/menu/menu.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    CharacterComponent
+    CharacterComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,

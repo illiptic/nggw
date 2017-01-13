@@ -44,7 +44,6 @@ export class ProfessionService {
         }))
       })
       .then(professions => {
-        console.log(professions)
         return professions
       })
   }

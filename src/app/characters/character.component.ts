@@ -14,15 +14,33 @@ export class CharacterComponent {
   @Input() profession: Profession
 
   selectedSpecs: {[id: number]: any} = {}
+  display: {[id: string]: boolean} = {}
 
   constructor(
     private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit(): void {
-    this.character.specializations.pve.forEach((spec) => {
-      this.selectedSpecs[spec.id] = spec
-    })
+    // this.setSelectedSpecs()
+  }
+
+  ngOnChanges(): void {
+    this.setSelectedSpecs()
+  }
+
+  toggle(name: string): void {
+    this.display[name] = !this.display[name]
+  }
+
+  setSelectedSpecs(): void {
+    this.selectedSpecs = {}
+    if (this.character.specializations && this.character.specializations.pve) {
+      this.character.specializations.pve.forEach((spec) => {
+        if (spec) {
+          this.selectedSpecs[spec.id] = spec
+        }
+      })
+    }
   }
 
   getBackground(specialization: Specialization): SafeStyle {
