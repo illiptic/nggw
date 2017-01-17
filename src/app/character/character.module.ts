@@ -7,7 +7,13 @@ import { CharacterDetailComponent } from '../character-detail/character-detail.c
 const routes: Routes = [
   {
     path: 'characters',
-    component: CharacterComponent
+    component: CharacterComponent,
+    children: [
+      {
+        path: ':id',
+        component: CharacterDetailComponent
+      }
+    ]
   }
 ]
 

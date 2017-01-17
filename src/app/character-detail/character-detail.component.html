@@ -1,7 +1,9 @@
-<div *ngIf="character">
-  <img *ngIf="profession" [src]="profession.icon_big" />
-  <h2>{{character.name}}</h2>
-  <span>level {{character.level}} {{character.race}} {{ character.profession }}</span>
+<div *ngIf="character" class="details">
+  <div class="present">
+    <img *ngIf="profession" [src]="profession.icon_big" />
+    <span class="name">{{character.name}}</span>
+    <span>Level {{character.level}} {{character.race}} {{ character.profession }}</span>
+  </div>
 
   <div *ngIf="profession" class="specializations">
     <!-- [style.background-image]="getBackground(spec)" -->

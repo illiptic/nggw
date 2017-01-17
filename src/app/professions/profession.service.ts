@@ -6,9 +6,15 @@ import { ApiService } from '../services/api.service'
 @Injectable()
 export class ProfessionService {
 
+  private professions: {[name: string]: Profession} = null
+
   constructor(private api: ApiService) { }
 
-  getProfessions(): Observable<Profession[]> {
+
+  getProfessions(): Observable<{[name: string]: Profession}> {
+    if (this.professions) {
+      return Observable.of<{[id: string]: Profession}>(this.professions)
+    }
     return this.api
       .get('professions')
       .map(response => {
@@ -38,7 +44,11 @@ export class ProfessionService {
             })
         }))
         .map(() => {
-          return professions as Profession[]
+          this.professions = professions.reduce((map, profession) => {
+            map[profession.id] = profession
+            return map
+          }, {})
+          return this.professions
         })
       })
   }

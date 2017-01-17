@@ -1,74 +1,100 @@
-.specializations {
+.details {
+  padding: 10px;
+  box-shadow: 5px 5px 8px black;
+  margin: 10px 20px;
+  background: #333;
+
+  .present {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    height: 64px;
+
+    img {
+      margin-top: -5px;
+    }
+
+    .name {
+      font-size: 2em;
+      font-weight: bold;
+    }
+  }
+
+  .specializations {
     background-color: black;
     color: white;
     margin: auto;
     width: 670px;
 
-  .specialization {
-    width: inherit;
-    border-bottom: 1px solid white;
-    background-color: #333;
-    color: #aaa;
+    .specialization {
+      width: inherit;
+      border-bottom: 1px solid white;
+      border-top: 1px solid white;
+      margin-bottom: -1px;
+      background-color: #333;
+      color: #aaa;
 
-    &.selected {
-      background-color: black;
-      color: white;
+      &.selected {
+        background-color: black;
+        color: white;
 
-      h2 img {
-        opacity: 1;
+        h2 img {
+          opacity: 1;
+        }
       }
-    }
 
-    .spec-container {
-      position: relative;
-      overflow: hidden;
-    }
+      .spec-container {
+        position: relative;
+        overflow: hidden;
+      }
 
-    h2 {
-      margin: 0;
-      padding: 8px;
-      height: 30px;
-      z-index: 1;
+      h2 {
+        margin: 0;
+        padding: 8px;
+        height: 30px;
+        z-index: 1;
 
-      img {
-        vertical-align: bottom;
-        margin-right: 5px;
+        img {
+          vertical-align: bottom;
+          margin-right: 5px;
+          opacity: 0.4;
+        }
+      }
+
+      .background {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        background-position: 0 100%;
         opacity: 0.4;
       }
-    }
 
-    .background {
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      background-position: 0 100%;
-      opacity: 0.4;
-    }
-
-    .trait-grid {
-      display: flex;
-      flex-direction: column;
-      flex-wrap: wrap;
-      height: 160px;
-      align-content: space-around;
-      justify-content: space-around;
-    }
-    .trait {
-      height: 48px;
-      width: 48px;
-      z-index: 1;
-      opacity: 0.4;
-
-      &.minor {
-        margin: 48px 0;
+      .trait-grid {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        height: 160px;
+        align-content: space-around;
+        justify-content: space-around;
       }
-      &.selected {
-        opacity: 1;
-      }
+      .trait {
+        height: 48px;
+        width: 48px;
+        z-index: 1;
+        opacity: 0.4;
 
-      img {
-        width: 100%;
-        height: 100%;
+        &.minor {
+          margin: 48px 0;
+        }
+        &.selected {
+          opacity: 1;
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
       }
     }
   }

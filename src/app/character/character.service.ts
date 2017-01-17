@@ -6,6 +6,8 @@ import { Character } from './character.model'
 @Injectable()
 export class CharacterService {
 
+  private characters: {[name: string]: Character} = {}
+
   constructor(private api: ApiService) { }
 
   getCharacters(): Observable<string[]> {
@@ -17,10 +19,16 @@ export class CharacterService {
   }
 
   getCharacter(name: string): Observable<Character> {
-    return this.api
-      .get('characters/' + name)
-      .map(response => {
-        return response as Character
-      })
+    if (this.characters[name]) {
+      return Observable.of<Character>(this.characters[name])
+    } else {
+      return this.api
+        .get('characters/' + name)
+        .map(response => {
+          let char = response as Character
+          this.characters[name] = char
+          return char
+        })
+    }
   }
 }
