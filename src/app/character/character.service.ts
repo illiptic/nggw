@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { ApiService } from '../services/api.service'
 import { Character } from './character.model'
 
@@ -7,18 +8,18 @@ export class CharacterService {
 
   constructor(private api: ApiService) { }
 
-  getCharacters(): Promise<string[]> {
+  getCharacters(): Observable<string[]> {
     return this.api
       .get('characters')
-      .then(response => {
+      .map(response => {
         return response as string[]
       })
   }
 
-  getCharacter(name: string): Promise<Character> {
+  getCharacter(name: string): Observable<Character> {
     return this.api
       .get('characters/' + name)
-      .then(response => {
+      .map(response => {
         return response as Character
       })
   }

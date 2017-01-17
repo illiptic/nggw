@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Skill } from './skill.model'
 import { ApiService } from '../services/api.service'
 
@@ -7,16 +8,16 @@ export class SkillService {
 
   constructor(private api: ApiService) { }
 
-  getSkills(): Promise<Skill[]> {
+  getSkills(): Observable<Skill[]> {
     return this.api
       .get('skills')
-      .then(response => {
+      .map(response => {
         return response as string[]
       })
-      .then(ids => {
+      .flatMap(ids => {
         return this.api.get('skills?ids=' + ids.join(','))
       })
-      .then(skills => {
+      .map(skills => {
         return skills as Skill[]
       })
   }

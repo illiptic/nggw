@@ -23,7 +23,7 @@ export class AppComponent {
 
   getAccount(): void {
     this.accountService.getAccount()
-      .then((data) => {
+      .subscribe((data) => {
         this.username = data.name.split('.').shift()
       })
   }

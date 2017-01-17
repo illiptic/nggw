@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Account } from './account.model'
 import { ApiService } from '../services/api.service'
 
@@ -7,10 +8,10 @@ export class AccountService {
 
   constructor(private api: ApiService) { }
 
-  getAccount(): Promise<Account> {
+  getAccount(): Observable<Account> {
     return this.api
       .get('account')
-      .then(response => {
+      .map(response => {
         return response as Account
       })
   }

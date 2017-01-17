@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core'
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser'
+import { Observable } from 'rxjs';
 
 import { Account } from '../account/account.model'
 import { AccountService } from '../account/account.service'
@@ -37,23 +38,23 @@ export class CharacterComponent {
 
   getProfessions(): void {
     this.professionService.getProfessions()
-    .then((data) => {
+    .subscribe((data) => {
       this.professions = data
     })
   }
   getCharacters(): void {
     this.characterService.getCharacters()
-      .then((data) => {
+      .subscribe((data) => {
         this.characterNames = data
       })
   }
 
-  getCharacter(name: string): Promise<any> {
+  getCharacter(name: string): Observable<any> {
     if(this.characters[name]) {
-      return Promise.resolve()
+      return Observable.of<any>([])
     } else {
       return this.characterService.getCharacter(name)
-        .then((data) => {
+        .map((data) => {
           this.characters[name] = data
         })
     }
@@ -61,7 +62,7 @@ export class CharacterComponent {
 
   displayCharacter(name: string): void {
     this.getCharacter(name)
-      .then(() => {
+      .subscribe(() => {
         this.currentCharacter = name
         let currentProfession = this.characters[this.currentCharacter].profession
         this.currentCharacterProfession = this.professions.filter(prof => prof.id === currentProfession)[0]
