@@ -1,45 +1,58 @@
 <div class="equipment" [style.background-image]="equipmentBackground(character.profession)" *ngIf="equipment">
 
   <div class="armor">
-    <div class="slot" *ngFor="let item of getItems('armor')">
+    <div class="slot" *ngFor="let item of itemsByCategory['armor']" (mouseover)="showDetails(item, $event)" (mouseout)="hideDetails()">
       <div *ngIf="item">
-        <img [src]="item.icon" [title]="item.name" />
+        <img [src]="item.icon" [title]="item.name" (mouseout)="hideDetails()"/>
       </div>
     </div>
   </div>
 
   <div class="accessories">
-    <div class="slot" *ngFor="let item of getItems('accessories')">
-      <div *ngIf="item">
+    <div class="slot" *ngFor="let item of itemsByCategory['accessories']">
+      <div *ngIf="item" (mouseover)="showDetails(item, $event)" (mouseout)="hideDetails()">
         <img [src]="item.icon" [title]="item.name" />
       </div>
     </div>
   </div>
 
   <div class="weapons">
-    <div class="slot" *ngFor="let item of getItems('weapons')">
-      <div *ngIf="item">
+    <div class="slot" *ngFor="let item of itemsByCategory['weapons']">
+      <div *ngIf="item" (mouseover)="showDetails(item, $event)" (mouseout)="hideDetails()">
         <img [src]="item.icon" [title]="item.name" />
       </div>
     </div>
   </div>
 
   <div class="aquatic">
-    <div class="slot" *ngFor="let item of getItems('aquatic')">
-      <div *ngIf="item">
+    <div class="slot" *ngFor="let item of itemsByCategory['aquatic']">
+      <div *ngIf="item" (mouseover)="showDetails(item, $event)" (mouseout)="hideDetails()">
         <img [src]="item.icon" [title]="item.name" />
       </div>
     </div>
   </div>
 
   <div class="tools">
-    <div class="slot" *ngFor="let item of getItems('tools')">
-      <div *ngIf="item">
+    <div class="slot" *ngFor="let item of itemsByCategory['tools']">
+      <div *ngIf="item" (mouseover)="showDetails(item, $event)" (mouseout)="hideDetails()">
         <img [src]="item.icon" [title]="item.name" />
       </div>
     </div>
   </div>
 
-
-
+  <div class="popover" *ngIf="displayDetails" [style.top]="displayDetails.y" [style.left]="displayDetails.x">
+    <span class="title">{{ displayDetails.item.name }}</span>
+    <div *ngIf="displayDetails.item.details.min_power">Power {{displayDetails.item.details.min_power}} - {{displayDetails.item.details.max_power}}</div>
+    <div *ngIf="displayDetails.item.details.defense">Defense {{displayDetails.item.details.defense}}</div>
+    <ul *ngIf="displayDetails.item.details.infix_upgrade">
+      <li *ngFor="let bonus of displayDetails.item.details.infix_upgrade.attributes">
+        +{{bonus.modifier}} {{bonus.attribute}}
+      </li>
+    </ul>
+    <ul *ngIf="displayDetails.item.stats">
+      <li *ngFor="let bonus of displayDetails.item.stats.attributes">
+        +{{bonus.modifier}} {{bonus.attribute}}
+      </li>
+    </ul>
+  </div>
 </div>

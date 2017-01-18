@@ -12,6 +12,8 @@ export class EquipmentComponent {
 
   @Input() character: Character
   equipment: {[id: string]: any}
+  itemsByCategory: any
+  displayDetails: any
 
   constructor(
     private characterService: CharacterService
@@ -24,8 +26,11 @@ export class EquipmentComponent {
     let char = this.character
     this.characterService.getCharacterItems(char.name)
       .subscribe(equipment => {
-        console.log(char.equipment)
         this.equipment = equipment
+        this.itemsByCategory = {}
+        Object.keys(this.slots).forEach((cat) => {
+          this.itemsByCategory[cat] = this.getItems(cat)
+        })
       })
   }
 
@@ -33,12 +38,28 @@ export class EquipmentComponent {
     return 'url(/assets/professions/' + profession.toLowerCase() + '.jpg)'
   }
 
+  showDetails(item, e) {
+    if (item) {
+      this.displayDetails = {
+        item,
+        x: (e.target.offsetLeft + 60) + 'px',
+        y: (e.target.offsetTop) + 'px'
+      }
+    } else {
+      this.displayDetails = null
+    }
+  }
+
+  hideDetails() {
+    this.displayDetails = null
+  }
+
   getItems(category: string): any {
     return this.slots[category].map((slot) => {
       let piece = this.character.equipment.filter((piece) => {
         return piece.slot === slot
       })[0]
-      return piece ? this.equipment[piece.id] : null
+      return piece ? Object.assign({}, this.equipment[piece.id], piece) : null
     })
   }
 

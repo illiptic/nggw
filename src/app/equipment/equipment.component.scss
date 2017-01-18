@@ -7,7 +7,10 @@
     width: 48px;
     height: 48px;
     margin: 6px;
-    background-color: #aaa;
+    background: radial-gradient(#6B4500, white);
+    box-shadow: white 0 0 4px;
+    border-radius: 10px;
+    overflow: hidden;
 
     & > div {
       width: 48px;
@@ -53,6 +56,19 @@
 
     .slot {
       display: inline-block;
+    }
+  }
+
+  .popover {
+    position: absolute;
+    padding: 10px;
+    background-color: #333;
+    box-shadow: white 0px 0px 20px;
+    z-index: 2;
+    color: white;
+
+    .title {
+      font-weight: bold;
     }
   }
 }

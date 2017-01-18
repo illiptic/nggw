@@ -26,6 +26,14 @@ export class CharacterService {
         .get('characters/' + name)
         .map(response => {
           let char = response as Character
+          char.equipment.map((item) => {
+            if (item.stats) {
+              item.stats.attributes = Object.keys(item.stats.attributes).map((a) => {
+                return {attribute: a, modifier: item.stats.attributes[a]}
+              })
+            }
+            return item
+          })
           this.characters[name] = char
           return char
         })

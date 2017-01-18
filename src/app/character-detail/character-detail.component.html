@@ -12,7 +12,7 @@
   <div *ngIf="profession" class="specializations">
     <div *ngFor="let spec of profession.specializations" class="specialization" [class.selected]="selectedSpecs[spec.id]">
       <h2 (click)="toggle(spec.name)"><img height="30" [src]="spec.icon" />{{spec.name}}</h2>
-      <div class="spec-container" *ngIf="display[spec.name]">
+      <div class="spec-container" [class.show]="display[spec.name]">
         <img class="background" [src]="spec.background">
         <div class="trait-grid">
           <div *ngFor="let trait of spec.traits" class="trait" [class.minor]="trait.slot === 'Minor'" [class.selected]="characterSpecSelected(trait)">
