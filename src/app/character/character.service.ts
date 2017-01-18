@@ -31,4 +31,18 @@ export class CharacterService {
         })
     }
   }
+
+  getCharacterItems(name: string): Observable<any> {
+    return this.api
+      .get('characters/' + name + '/equipment')
+      .flatMap(result => {
+        return this.api.get('items?ids=' + result.equipment.map(item => item.id).join(','))
+      })
+      .map(items => {
+        return items.reduce((map, item) => {
+          map[item.id] = item
+          return map
+        }, {})
+      })
+  }
 }

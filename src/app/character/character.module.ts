@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { CharacterComponent } from './character.component'
 import { CharacterDetailComponent } from '../character-detail/character-detail.component'
+import { EquipmentComponent } from '../equipment/equipment.component'
 
 const routes: Routes = [
   {
@@ -23,8 +24,9 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   declarations: [
-    CharacterComponent,
-    CharacterDetailComponent
+    EquipmentComponent,
+    CharacterDetailComponent,
+    CharacterComponent
   ]
 })
 export class CharacterModule { }

@@ -79,10 +79,6 @@ export class CharacterDetailComponent {
     return this.characterService.getCharacter(name)
   }
 
-  getBackground(specialization: Specialization): SafeStyle {
-    return this.sanitizer.bypassSecurityTrustStyle('url('+ specialization.background +')')
-  }
-
   characterSpecSelected(trait: Trait): boolean {
     let spec = this.selectedSpecs[trait.specialization]
     return spec && (trait.slot === 'Minor' || spec.traits.indexOf(trait.id) > -1)

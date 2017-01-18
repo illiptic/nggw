@@ -13,7 +13,7 @@ import { AppComponent } from './app.component'
 import { MenuComponent } from './common/menu/menu.component'
 
 import { AppRoutingModule } from './app-routing.module'
-import { CharacterModule } from './character/character.module'
+import { CharacterModule } from './character/character.module';
 
 @NgModule({
   declarations: [

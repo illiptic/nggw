@@ -6,4 +6,5 @@ export class Character {
   race: string
   profession: string
   specializations: any
+  equipment: Array<any>
 }

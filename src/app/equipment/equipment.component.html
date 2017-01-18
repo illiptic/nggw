@@ -1,0 +1,45 @@
+<div class="equipment" [style.background-image]="equipmentBackground(character.profession)" *ngIf="equipment">
+
+  <div class="armor">
+    <div class="slot" *ngFor="let item of getItems('armor')">
+      <div *ngIf="item">
+        <img [src]="item.icon" [title]="item.name" />
+      </div>
+    </div>
+  </div>
+
+  <div class="accessories">
+    <div class="slot" *ngFor="let item of getItems('accessories')">
+      <div *ngIf="item">
+        <img [src]="item.icon" [title]="item.name" />
+      </div>
+    </div>
+  </div>
+
+  <div class="weapons">
+    <div class="slot" *ngFor="let item of getItems('weapons')">
+      <div *ngIf="item">
+        <img [src]="item.icon" [title]="item.name" />
+      </div>
+    </div>
+  </div>
+
+  <div class="aquatic">
+    <div class="slot" *ngFor="let item of getItems('aquatic')">
+      <div *ngIf="item">
+        <img [src]="item.icon" [title]="item.name" />
+      </div>
+    </div>
+  </div>
+
+  <div class="tools">
+    <div class="slot" *ngFor="let item of getItems('tools')">
+      <div *ngIf="item">
+        <img [src]="item.icon" [title]="item.name" />
+      </div>
+    </div>
+  </div>
+
+
+
+</div>

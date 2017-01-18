@@ -2,11 +2,14 @@
   <div class="present">
     <img *ngIf="profession" [src]="profession.icon_big" />
     <span class="name">{{character.name}}</span>
-    <span>Level {{character.level}} {{character.race}} {{ character.profession }}</span>
+    <span class="info">Level {{character.level}} {{character.race}} {{ character.profession }}</span>
+  </div>
+
+  <div class="equipmentWrapper">
+    <equipment [character]="character"></equipment>
   </div>
 
   <div *ngIf="profession" class="specializations">
-    <!-- [style.background-image]="getBackground(spec)" -->
     <div *ngFor="let spec of profession.specializations" class="specialization" [class.selected]="selectedSpecs[spec.id]">
       <h2 (click)="toggle(spec.name)"><img height="30" [src]="spec.icon" />{{spec.name}}</h2>
       <div class="spec-container" *ngIf="display[spec.name]">
