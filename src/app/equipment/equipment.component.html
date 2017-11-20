@@ -1,4 +1,4 @@
-<div class="equipment" [style.background-image]="equipmentBackground(character.profession)" *ngIf="equipment">
+<div class="equipment" [style.background-image]="equipmentBackground(character.profession)">
 
   <div class="armor">
     <div class="slot" *ngFor="let item of itemsByCategory['armor']" (mouseover)="showDetails(item, $event)" (mouseout)="hideDetails()">

@@ -22,15 +22,18 @@ export class CharacterComponent {
     private characterService: CharacterService,
   ) {}
 
+  loading: boolean
   characterNames: string[]
 
   ngOnInit(): void {
+    this.loading = true
     this.getCharacters()
   }
 
   getCharacters(): void {
     this.characterService.getCharacters()
       .subscribe((data) => {
+        this.loading = false
         this.characterNames = data
       })
   }

@@ -20,6 +20,10 @@ export class EquipmentComponent {
   ) { }
 
   ngOnInit() {
+    this.itemsByCategory = {}
+    Object.keys(this.slots).forEach(cat => {
+      this.itemsByCategory[cat] = this.slots[cat].map(slot => null)
+    })
   }
 
   ngOnChanges() {
@@ -27,7 +31,6 @@ export class EquipmentComponent {
     this.characterService.getCharacterItems(char.name)
       .subscribe(equipment => {
         this.equipment = equipment
-        this.itemsByCategory = {}
         Object.keys(this.slots).forEach((cat) => {
           this.itemsByCategory[cat] = this.getItems(cat)
         })

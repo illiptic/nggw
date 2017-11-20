@@ -6,9 +6,13 @@
   </div>
 
   <div class="equipmentWrapper">
+    <div *ngIf="loading" class="equipmentLoader">Loading</div>
     <equipment [character]="character"></equipment>
   </div>
 
+  <div *ngIf="!professions" class="specializations">
+    Loading...
+  </div>
   <div *ngIf="profession" class="specializations">
     <div *ngFor="let spec of profession.specializations" class="specialization" [class.selected]="selectedSpecs[spec.id]">
       <h2 (click)="toggle(spec.name)"><img height="30" [src]="spec.icon" />{{spec.name}}</h2>
@@ -23,4 +27,7 @@
     </div>
   </div>
 
+</div>
+<div *ngIf="!character" class="details">
+  Loading...
 </div>

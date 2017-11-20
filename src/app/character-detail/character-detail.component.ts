@@ -19,6 +19,8 @@ export class CharacterDetailComponent {
   character: Character
   profession: Profession
 
+  loading: boolean
+
   professions: {[id: string]: Profession}
   selectedSpecs: {[id: number]: any} = {}
   display: {[id: string]: boolean} = {}
@@ -38,9 +40,11 @@ export class CharacterDetailComponent {
       })
     this.route.params
       .switchMap((params: Params) => {
+        this.loading = true
         return this.getCharacter(params['id'])
           .map(character => {
             this.character = character
+            this.loading = false
             return character
           })
       })

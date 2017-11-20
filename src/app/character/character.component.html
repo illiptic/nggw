@@ -1,5 +1,10 @@
 <div class="character">
   <ul class="character-list">
+    <li *ngIf="loading">
+      <span>
+         Loading...
+      </span>
+    </li>
     <li *ngFor="let char of characterNames" routerLinkActive="selected" [routerLink]="[char]">
       <span>
         {{ char }}

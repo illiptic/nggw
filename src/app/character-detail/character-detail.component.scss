@@ -27,9 +27,23 @@
   }
 
   .equipmentWrapper {
+    position: relative;
     float: left;
     min-width: 400px;
+    min-height: 400px;
     width: 50%;
+
+    .equipmentLoader {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      opacity: .85;
+      z-index: 1;
+      text-align: center;
+      color: white;
+      padding-top: 50%;
+    }
   }
 
   .specializations {
